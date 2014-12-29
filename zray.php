@@ -150,6 +150,7 @@ class Laravel {
 	protected function loadLaravelRoutePanel(&$storage){
 		$route = \Route::getCurrentRoute();
 		$routePanel = array();
+		if(get_class($route)!='Illuminate\Routing\Route'){ return; }
 		if(!empty($route->domain())){
 			$routePanel['Host']=$route->domain();
 		}
