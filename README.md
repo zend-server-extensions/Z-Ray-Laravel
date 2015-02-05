@@ -1,7 +1,7 @@
 Z-Ray-Laravel
 =============
 
-Laravel 4 Extension for Zend Server Z-Ray
+Laravel 4/5 Extension for Zend Server Z-Ray
 
 This is an extension to add functionality to the Zend Server Z-Ray. It will result 
 in additional tab(s) to be presented in the browser.

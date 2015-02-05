@@ -1,7 +1,7 @@
 <?php
 /*********************************
-	Laravel 4 Z-Ray Extension
-	Version: 1.00
+	Laravel 4/5 Z-Ray Extension
+	Version: 1.01
 **********************************/
 namespace ZRay;
 
@@ -17,8 +17,8 @@ class Laravel {
 
 	public function laravelRunExit($context,&$storage){
 		global $app,$zend_laravel_views,$zend_laravel_events;
-		if (version_compare($app::VERSION,4,'<')||version_compare($app::VERSION,5,'>=')) {
-			return; //this extension support only laravel 4
+		if (version_compare($app::VERSION,4,'<')||version_compare($app::VERSION,6,'>=')) {
+			return; //this extension support only laravel 4/5
 		}
 		$this->loadLaravelPanel($storage);
 		if (version_compare($app::VERSION,4.1,'>=')) {
@@ -38,8 +38,8 @@ class Laravel {
 	}
 	public function laravelBeforeRun($context,&$storage){
 		global $app;
-		if (version_compare($app::VERSION,4,'<')||version_compare($app::VERSION,5,'>=')) {
-			return; //this extension support only laravel 4
+		if (version_compare($app::VERSION,4,'<')||version_compare($app::VERSION,6,'>=')) {
+			return; //this extension support only laravel 4/5
 		}
 		if (version_compare($app::VERSION,4.1,'<')) {
 			$this->loadSessionPanel($storage);
@@ -225,4 +225,4 @@ $zre->setMetadata(array(
 
 $zre->setEnabledAfter('Illuminate\Foundation\Application::detectEnvironment');
 $zre->traceFunction('Illuminate\Foundation\Application::boot',function(){},array($zrayLaravel,'laravelBeforeRun'));
-$zre->traceFunction('Illuminate\Foundation\Application::shutdown',function(){},array($zrayLaravel,'laravelRunExit'));
+$zre->traceFunction('Symfony\Component\HttpFoundation\Response::send',function(){},array($zrayLaravel,'laravelRunExit'));
