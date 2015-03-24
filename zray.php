@@ -132,14 +132,16 @@ class Laravel {
 		$name = \Route::currentRouteName();
 		$route = \Route::getCurrentRoute();
 		$routePanel = array();
-		if(!empty($route->getHost())){
-			$routePanel['Host']=$route->getHost();
+		$host = $route->getHost();
+		if(!empty($host)){
+			$routePanel['Host']=$host;
 		}
 		if(!empty($name)){
 			$routePanel['Name']=$name;
 		}
-		if(!empty($route->getPath())){
-			$routePanel['Path']=$route->getPath();
+		$path = $route->getPath();
+		if(!empty($path)){
+			$routePanel['Path']=$path;
 		}
 		$routePanel['Action']=$route->getAction() ?:'Closure';
 		$routePanel['Before Filters']=$route->getBeforeFilters();
@@ -151,14 +153,17 @@ class Laravel {
 		$route = \Route::getCurrentRoute();
 		$routePanel = array();
 		if(get_class($route)!='Illuminate\Routing\Route'){ return; }
-		if(!empty($route->domain())){
-			$routePanel['Host']=$route->domain();
+		$domain = $route->domain();
+		if(!empty($domain)){
+			$routePanel['Host']=$domain;
 		}
-		if(!empty($route->getName())){
-			$routePanel['Name']=$route->getName();
+		$name = $route->getName();
+		if(!empty($name)){
+			$routePanel['Name']=$name;
 		}
-		if(!empty($route->getPath())){
-			$routePanel['Path']=$route->getPath();
+		$path = $route->getPath();
+		if(!empty($path)){
+			$routePanel['Path']=$path;
 		}
 		$routePanel['Action']=$route->getActionName();
 		$routePanel['Before Filters']=$route->beforeFilters();
